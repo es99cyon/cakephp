@@ -3,7 +3,6 @@
         <h3>케이크로 만드는 게시판</h3>
     </div>
     <div class="col-md-6 text-right">
-        <a href="" class="btn btn-primary"></a>
         <?php echo $this->Html->link('Add Data', ['action'=>'add'],['class'=>'btn btn-primary']) ?>
     </div>
 </div>

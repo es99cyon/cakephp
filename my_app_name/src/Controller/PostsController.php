@@ -6,9 +6,9 @@ class PostsController extends AppController{
     public function index() {
         $this->set('posts', $this->Posts->find('all'));
     }
-
+//데이터 추가
     public function add() {
-        $post = $this->Posts->newEntity();
+        $postx = $this->Posts->newEntity();
         if($this->request->is('post')) {
             $postx = $this->Posts->patchEntity($postx, $this->request->getData());
             $this->Posts->save($postx);
