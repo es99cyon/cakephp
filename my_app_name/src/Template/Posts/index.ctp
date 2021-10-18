@@ -24,7 +24,7 @@
             <td><?php echo $post->name ?></td>
             <td><?php echo $post->detail ?></td>
             <td>
-                <a href="" class="btn btn-warning">edit</a>
+                <?php echo $this->Html->link('Edit', ['action'=>'edit', $post->id], [ 'class'=>'btn btn-warning']) ?>
                 <a href="" class="btn btn-danger">delete</a>                
             </td>
         </tr>
