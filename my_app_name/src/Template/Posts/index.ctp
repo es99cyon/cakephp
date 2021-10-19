@@ -25,7 +25,7 @@
             <td><?php echo $post->detail ?></td>
             <td>
                 <?php echo $this->Html->link('Edit', ['action'=>'edit', $post->id], [ 'class'=>'btn btn-warning']) ?>
-                <a href="" class="btn btn-danger">delete</a>                
+                <?php echo $this->Form->postLink('Delete', ['action'=>'delete', $post->id], ['class'=>'btn btn-danger', 'confirm'=>'are you sure?']) ?>                
             </td>
         </tr>
     <?php
