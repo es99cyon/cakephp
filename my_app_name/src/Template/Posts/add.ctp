@@ -4,12 +4,10 @@
             <div class="card-body">
                 <?php echo $this->Form->create($posts) ?>
                 <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" class="form-control"/>
+                    <?php echo $this->Form->input('name',['class'=>'form-control']) ?>
                 </div>
                 <div class="form-group">
-                    <label>detail</label>
-                    <textarea name="detail" class="form-control"></textarea>
+                    <?php echo $this->Form->input('detail',['class'=>'form-control']) ?>
                 </div>
                 <button type="submit" class="btn btn-primary">submit</button>
                 <?php echo $this->Html->link('Back', ['action'=>'index'],['class'=>'btn btn-success']); ?>

@@ -4,7 +4,11 @@ namespace App\Controller;
 class PostsController extends AppController {
 
     public function index() {
-        $this->set('posts', $this->Posts->find('all'));
+        $this->paginate = [
+            'limit'=> '5'
+        ];
+        $posta = $this->paginate($this->Posts->find('all'));
+        $this->set('posts', $posta);
     }
     /*
      * 데이터 추가
@@ -13,8 +17,11 @@ class PostsController extends AppController {
         $postx = $this->Posts->newEntity();
         if($this->request->is('post')) {
             $postx = $this->Posts->patchEntity($postx, $this->request->getData());
-            $this->Posts->save($postx);
+            $postx->created = date('Y-m-d H:i:s');
+            $postx->modified = date('Y-m-d H:i:s');
+            if($this->Posts->save($postx)) {
             return $this->redirect(['action'=>'index']);
+            }
         }
         $this->set('posts', $postx);
     }
