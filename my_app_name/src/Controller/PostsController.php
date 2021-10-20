@@ -2,7 +2,9 @@
 namespace App\Controller;
 
 class PostsController extends AppController {
-
+    /*
+     * Pagination 추가
+     */
     public function index() {
         $this->paginate = [
             'limit'=> '5'
