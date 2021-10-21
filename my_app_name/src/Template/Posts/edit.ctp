@@ -7,7 +7,7 @@
                     <?php echo $this->Form->input('name', ['value'=>$name, 'class'=>'form-control']) ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('detail', ['value'=>$detail, 'class'=>'form-control']) ?>
+                    <?php echo $this->Form->input('framework', ['value'=>$framework, 'class'=>'form-control']) ?>
                 </div>
                 <?php echo $this->Form->button('Update', ['class', 'btn btn-warning']) ?>
                 <?php echo $this->Form->end() ?>

@@ -12,6 +12,17 @@ class PostsController extends AppController {
         $posta = $this->paginate($this->Posts->find('all'));
         $this->set('posts', $posta);
     }
+
+    public function search() {
+        $search = $this->request->getQuery('q');
+        $this->paginate = [
+            'limit'=>'5'
+        ];
+        $posta = $this->paginate($this->Posts->find()->where(function($exp, $query) use($search) {
+            return $exp->like('framework', '%'.$search.'%');
+        }));
+        $this->set('posts', $posta);
+    }
     /*
      * 데이터 추가
      */
@@ -22,7 +33,7 @@ class PostsController extends AppController {
             $postx->created = date('Y-m-d H:i:s');
             $postx->modified = date('Y-m-d H:i:s');
             if($this->Posts->save($postx)) {
-            return $this->redirect(['action'=>'index']);
+                return $this->redirect(['action'=>'index']);
             }
         }
         $this->set('posts', $postx);
@@ -37,10 +48,10 @@ class PostsController extends AppController {
             $posty = $this->Posts->patchEntity($posty, $this->request->getData());
             $posty->modified = date('Y-m-d H:i:s');
             $this->Posts->save($posty);
-            return $this->redirect(['action'=>'index']);
+                return $this->redirect(['action'=>'index']);
         }
         $this->set('name', $posty->name);
-        $this->set('detail', $posty->detail);
+        $this->set('framework', $posty->framework);
         $this->set('posts', $posty);
     }
     
@@ -51,6 +62,15 @@ class PostsController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $postz = $this->Posts->get($id);
         $this->Posts->delete($postz);
+            return $this->redirect(['action'=>'index']);
+    }
+
+    public function deleteselected() {
+        $this->request->allowMethod(['post', 'delete']);
+        $data = $this->Posts->getData('ids');
+        foreach($data as $value) {
+            $this->Posts->deleteAll(['id'=>$value]);
+        }
         return $this->redirect(['action'=>'index']);
     }
 }

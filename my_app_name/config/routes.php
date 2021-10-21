@@ -71,6 +71,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/posts/add', ['controller' => 'Posts', 'action' => 'add']);
     $routes->connect('/posts/edit', ['controller' => 'Posts', 'action' => 'edit']);
     $routes->connect('/posts/delete', ['controller' => 'Posts', 'action' => 'delete']);
+    $routes->connect('/posts/search', ['controller' => 'Posts', 'action' => 'search']);
     /*
      * Connect catchall routes for all controllers.
      *
